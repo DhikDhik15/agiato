@@ -9,4 +9,7 @@ module.exports = function(app){
     app.route('/tampil')
         .get(jsonku.tampiluser);
 
+    app.route('/tampilID/:id')
+        .get(jsonku.tampiluserID);
+
 }
