@@ -11,11 +11,11 @@ exports.registrasi = function(req,res) {
     var post = {
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
-        //role_user: req.body.role_user
+        password: md5(req.body.password), 
+        role_user: req.body.role_user
     }
 
-    var query = "SELECT email FROM ?? WHERE ??";
+    var query = "SELECT email FROM ?? WHERE ??=?";
     var table = ["users","email", post.email];
 
     query = mysql.format(query,table);
@@ -36,7 +36,7 @@ exports.registrasi = function(req,res) {
                     }
                 });
             }else{
-                response.ok("EMAIL SUDAH TERDAFTAR");
+                response.ok("EMAIL SUDAH TERDAFTAR",res);
             }
         }
     })
