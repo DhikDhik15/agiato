@@ -5,15 +5,14 @@ var response = require('../res');
 var jwt = require('jsonwebtoken');
 var config = require('../config/secret');
 var ip = require('ip');
-const conn = require('../koneksi');
 
 //buat controller untuk registrasi
 exports.registrasi = function(req,res) {
     var post = {
         name: req.body.name,
         email: req.body.email,
-        password: md5(req.body.password),
-        role_user: req.body.role_user
+        password: req.body.password
+        //role_user: req.body.role_user
     }
 
     var query = "SELECT email FROM ?? WHERE ??";
