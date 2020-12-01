@@ -69,3 +69,19 @@ exports.ubahdatauser = function (req, res){
                 }
     });
 }
+
+//DELETE DATA
+exports.hapususer = function (req, res) {
+    var id = req.body.id;
+
+    connection.query('DELETE FROM users WHERE id=?',
+    [id],
+    function(error, rows, fields){
+        if(error){
+            console.log(error);
+        }else{
+            response.ok("berhasil hapus data",res)
+        }
+    });
+    
+}
