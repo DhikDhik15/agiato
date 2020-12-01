@@ -95,3 +95,7 @@ exports.login = function(req, res){
         }
     });
 }
+
+exports.halamanverifikasi = function(req, res){
+    response.ok("Halaman user UMUM",res);
+}
