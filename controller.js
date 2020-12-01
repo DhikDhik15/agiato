@@ -2,6 +2,7 @@
 
 var response = require('./res');
 var connection = require('./koneksi');
+const conn = require('./koneksi');
 
 exports.index = function(req,res){
     response.ok("Aplikasi REST API berjalan",res)
@@ -37,7 +38,7 @@ exports.tambahuser = function(req, res){
     var name = req.body.name;
     var gender = req.body.gender;
     var dob = req.body.dob;
-    var email = req.body.dob;
+    var email = req.body.email;
 
     connection.query('INSERT INTO users (name,gender,dob,email) VALUES (?, ?, ?, ?)',
         [name,gender,dob,email],
@@ -49,3 +50,22 @@ exports.tambahuser = function(req, res){
         }
     });
 };
+
+//PUT DATA
+exports.ubahdatauser = function (req, res){
+    var name = req.body.name;
+    var gender = req.body.gender;
+    var dob = req.body.dob;
+    var email = req.body.email;
+    var id = req.body.id;
+
+    connection.query('UPDATE users SET name=?, gender=?, dob=?, email=? WHERE id = ?', 
+    [name,gender,dob,email,id],
+            function(error, rows, fields){
+                if(error){
+                    console.log(error);
+                }else{
+                    response.ok("berhasil ubah data",res)
+                }
+    });
+}
