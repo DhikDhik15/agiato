@@ -18,7 +18,7 @@ exports.tampiluser = function(req, res){
     });
 };
 
-//menampilkan berdasarkan ID
+//GET berdasarkan ID
 exports.tampiluserID = function(req,res){
     let id = req.params.id;
     //console.log(id);
@@ -31,3 +31,21 @@ exports.tampiluserID = function(req,res){
         }
     });
 }
+
+//POST DATA
+exports.tambahuser = function(req, res){
+    var name = req.body.name;
+    var gender = req.body.gender;
+    var dob = req.body.dob;
+    var email = req.body.dob;
+
+    connection.query('INSERT INTO users (name,gender,dob,email) VALUES (?, ?, ?, ?)',
+        [name,gender,dob,email],
+        function (error, row, fields){
+            if(error){
+                console.log(error);
+            }else{
+                response.ok("berhasil menambahkan data",res)
+        }
+    });
+};
