@@ -85,3 +85,31 @@ exports.hapususer = function (req, res) {
     });
     
 }
+
+//MENAMPILKAN DETAIL USER
+exports.detailuser = function(req, res) {
+
+connection.query('\SELECT agiato_users.users.name,\
+                    agiato_users.users.gender,\
+                    agiato_users.users.dob,\
+                    agiato_academic.class_study.class,\
+                    agiato_academic.school.name_school,\
+                    agiato_academic.level_study.level ,\
+                    agiato_users.users.back_education\
+                    FROM\
+                    agiato_users.users\
+                    LEFT JOIN agiato_academic.class_study ON agiato_users.users.id_class = agiato_academic.class_study.id\
+                    LEFT JOIN agiato_academic.school ON agiato_users.users.id_school = agiato_academic.school.id\
+                    LEFT JOIN agiato_academic.level_study ON agiato_academic.school.id_level_study = agiato_academic.level_study.id \
+                    GROUP BY\
+                    agiato_users.users.id',
+//connection.query('select * from users',
+function(error, rows){   
+        if(error){ 
+            console.log(error);
+        }else{
+            response.ok(rows, res);
+        }
+    });
+    
+}
