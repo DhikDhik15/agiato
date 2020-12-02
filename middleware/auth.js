@@ -12,6 +12,17 @@ exports.registrasi = function(req,res) {
         name: req.body.name,
         email: req.body.email,
         password: md5(req.body.password), 
+        telephone: req.body.telephone,
+        id_province: req.body.id_province,
+        id_districts: req.body.id_districts,
+        id_city: req.body.id_city,
+        address: req.body.address,
+        id_school: req.body.id_school,
+        id_majors: req.body.id_majors,
+        id_class: req.body.id_class,
+        back_education: req.body.back_education,
+        parent_name: req.body.parent_name,
+        parent_telephone: req.body.parent_telephone,
         role_user: req.body.role_user
     }
 
