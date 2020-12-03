@@ -2,10 +2,11 @@ import {google} from 'googleapis';
 import { auth } from 'googleapis/build/src/apis/abusiveexperiencereport';
 import { createConnection } from 'mysql';
 
+
 const googleConfig = {
-    clientId: process.env.dc3o91lvp3egur7rsv1eoovr59l8nb3k.apps.googleusercontent.com,
-    clientSecret: process.env.iPykb2PfySeI1CSKroTSvZrS,
-    //redirect: process.env.process.env.http://localhost:3000/auth/google/callback,
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    redirect: process.env.GOOGLE_REDIRECT_URL,
 };
 
 const defaultScope = [
@@ -48,3 +49,4 @@ function getGoogleAccountFromCode(code) {
         tokens: tokens,
     };
 }
+export default google-util;

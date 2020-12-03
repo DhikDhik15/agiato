@@ -52,10 +52,6 @@ exports.tambahuser = function(req, res){
     });
 };
 
-// //POST DATA GOOGLE USER
-// exports.tambahusergoogle = function(req, res) {
-//     var sub = req.bod
-// }
 
 //PUT DATA
 exports.ubahdatauser = function (req, res){

@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 const session = require('express-session');
 var mysql = require('mysql');
-var registrasi = require('./middleware/auth');
 
 app.set('view engine', 'ejs');
 
@@ -18,8 +17,8 @@ app.get('/', function(req, res) {
     res.render('pages/auth');
 });
 
-// const port = process.env.PORT || 3000;
-// app.listen(port , () => console.log('App listening on port ' + port));
+const port = process.env.PORT || 3000;
+app.listen(port , () => console.log('App listening on port ' + port));
 
 /* PASSPORT SETUP */
 
@@ -31,7 +30,7 @@ app.use(passport.session());
 
 app.set('view engine', 'ejs');
 
-app.get('/success', (req, res) => res.send(userProfile));
+app.get('/views/success.js', (req, res) => res.send(userProfile));
 
 app.get('/error', (req, res) => res.send("error logging in"));
 
@@ -65,24 +64,6 @@ app.get('/auth/google',
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/error' }),
   function(req, res) {
-
-    // fetch('./middleware/auth.js')
-    //   .then(
-    //     function(response) {
-    //       if (response.status !== 200) {
-    //         console.log('ada masalah' + response.status);
-    //         return;
-    //       }
-
-    //       response.json().then(function(data) {
-    //         console.log(data);
-    //       });
-
-    //     }
-    //   )
-    //     .catch(function(err){
-    //       console.log('fetch error :-S', err);
-    //     })
     // Successful authentication, redirect success.
-    res.redirect('/success');
+    res.redirect('/views/success.js');
   });
