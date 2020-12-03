@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { GoogleLogin } from 'react-google-login';
+//import  auth from '../../../middleware/auth.js';
 
 function App() {
   const responseGoogle = (response) => {

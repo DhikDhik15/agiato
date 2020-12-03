@@ -1,6 +1,7 @@
 'use strict';
 
 var response = require('./res');
+//var response = require('./autorisasi');
 var connection = require('./koneksi');
 const conn = require('./koneksi');
 
@@ -50,6 +51,11 @@ exports.tambahuser = function(req, res){
         }
     });
 };
+
+// //POST DATA GOOGLE USER
+// exports.tambahusergoogle = function(req, res) {
+//     var sub = req.bod
+// }
 
 //PUT DATA
 exports.ubahdatauser = function (req, res){
