@@ -3,6 +3,8 @@ const { response } = require('express');
 const express = require('express');
 const app = express();
 const session = require('express-session');
+const { google } = require('googleapis');
+//const gapi = require('gapi');
 var mysql = require('mysql');
 
 app.set('view engine', 'ejs');
@@ -12,13 +14,19 @@ app.use(session({
     saveUninitialized: true,
     secret: 'SECRET'
 }));
+//all function here
+// function onSignIn(googleUser){
+//    var id_token = googleUser.getAuthResponse().id_token;
+// }
+
+//end of function
 
 app.get('/', function(req, res) {
     res.render('pages/auth');
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port , () => console.log('App listening on port ' + port));
+// const port = process.env.PORT || 3001;
+// app.listen(port , () => console.log('App listening on port ' + port));
 
 /* PASSPORT SETUP */
 
@@ -63,7 +71,10 @@ app.get('/auth/google',
  
 app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/error' }),
+  
   function(req, res) {
     // Successful authentication, redirect success.
+    // onSignIn(res);
     res.redirect('/views/success.js');
   });
+

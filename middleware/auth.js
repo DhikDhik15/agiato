@@ -2,7 +2,6 @@ var connection = require('../koneksi');
 var mysql = require('mysql');
 var md5 = require('md5');
 var response = require('../res');
-var response = require('../autorisasi');
 var jwt = require('jsonwebtoken');
 var config = require('../config/secret');
 var ip = require('ip');
@@ -10,8 +9,10 @@ var ip = require('ip');
 //buat controller untuk registrasi
 exports.registrasi = function(req,res) {
     var post = {
-        sub: req.body.sub,
+        //sub: req.body.sub,
         name: req.body.name,
+        gender: req.body.gender,
+        dob: req.body.dob,
         email: req.body.email,
         password: md5(req.body.password), 
         telephone: req.body.telephone,
@@ -22,11 +23,11 @@ exports.registrasi = function(req,res) {
         id_school: req.body.id_school,
         id_majors: req.body.id_majors,
         id_class: req.body.id_class,
-        back_education: req.body.back_education,
+       // back_education: req.body.back_education,
         parent_name: req.body.parent_name,
         parent_telephone: req.body.parent_telephone,
         role_user: req.body.role_user,
-        locale: req.body.locale
+        //locale: req.body.locale
     }
 
     var query = "SELECT email FROM ?? WHERE ??=?";

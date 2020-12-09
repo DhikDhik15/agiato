@@ -3,7 +3,9 @@
 var response = require('./res');
 //var response = require('./autorisasi');
 var connection = require('./koneksi');
+var md5 = require('md5');
 const conn = require('./koneksi');
+
 
 exports.index = function(req,res){
     response.ok("Aplikasi REST API berjalan",res)
