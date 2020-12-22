@@ -30,7 +30,8 @@ routes(app);
 
 //daftarkan menu routes dari index
 app.use('/auth', require('./middleware'));
+app.use('/teacher', require('./middleware'));
 
-app.listen(3001, () => {
+app.listen(3000, () => {
     console.log(`Server started on port`);
 });

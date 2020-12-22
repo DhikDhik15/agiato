@@ -6,7 +6,7 @@ var jwt = require('jsonwebtoken');
 var config = require('../config/secret');
 var ip = require('ip');
 
-//buat controller untuk registrasi
+//buat controller untuk registrasi USER
 exports.registrasi = function(req,res) {
     var post = {
         //sub: req.body.sub,
